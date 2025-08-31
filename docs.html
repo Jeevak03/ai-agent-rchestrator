@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - AI Agent Orchestrator Framework</title>
+    <meta name="description" content="Complete documentation for the AI Agent Orchestrator Framework">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-breadcrumb {
+            background: white;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .docs-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar ul li a {
+            color: #666;
+            text-decoration: none;
+            padding: 0.3rem 0;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            color: #667eea;
+            background: #f8f9ff;
+            padding-left: 0.5rem;
+        }
+
+        /* Content */
+        .content {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .content h1 {
+            color: #333;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .content h2 {
+            color: #333;
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content h3 {
+            color: #555;
+            margin: 1.5rem 0 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .content ul, .content ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .content li {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        /* Code Blocks */
+        .content pre {
+            background: #1a1a1a;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .content code {
+            background: #f8f9fa;
+            color: #e83e8c;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Alert Boxes */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid;
+        }
+
+        .alert-info {
+            background: #e3f2fd;
+            border-color: #2196f3;
+            color: #0d47a1;
+        }
+
+        .alert-warning {
+            background: #fff3e0;
+            border-color: #ff9800;
+            color: #e65100;
+        }
+
+        .alert-success {
+            background: #e8f5e8;
+            border-color: #4caf50;
+            color: #2e7d32;
+        }
+
+        /* Tables */
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .content table th,
+        .content table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .content table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .docs-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-bottom: 1rem;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .back-to-home:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-book"></i> Documentation</h1>
+            <p>Complete guide to using the AI Agent Orchestrator Framework</p>
+        </div>
+    </header>
+
+    <nav class="nav-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span>/</span>
+                <span>Documentation</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="docs-container">
+            <aside class="sidebar">
+                <h3>Quick Navigation</h3>
+                <ul>
+                    <li><a href="#getting-started" class="active">Getting Started</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#usage">Basic Usage</a></li>
+                    <li><a href="#personas">All Personas</a></li>
+                    <li><a href="#advanced">Advanced Usage</a></li>
+                    <li><a href="#customization">Customization</a></li>
+                    <li><a href="#ai-tools">AI Tool Integration</a></li>
+                    <li><a href="#examples">Examples</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                </ul>
+
+                <h3 style="margin-top: 2rem;">External Links</h3>
+                <ul>
+                    <li><a href="https://github.com/IlamSingleBrainCell/ai-agent-orchestrator" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a></li>
+                    <li><a href="https://github.com/IlamSingleBrainCell/ai-agent-orchestrator/issues" target="_blank"><i class="fas fa-bug"></i> Report Issues</a></li>
+                    <li><a href="https://github.com/IlamSingleBrainCell/ai-agent-orchestrator/blob/main/README.md" target="_blank"><i class="fas fa-file-text"></i> README</a></li>
+                </ul>
+            </aside>
+
+            <main class="content">
+                <h1 id="getting-started">Getting Started</h1>
+                
+                <div class="alert alert-info">
+                    <strong>🚀 Quick Start:</strong> Add <code>@agents</code> before any prompt in your AI tool and get expert-level, role-specific responses instantly!
+                </div>
+
+                <p>The AI Agent Orchestrator Framework transforms generic AI responses into expert-level, persona-driven outputs. Instead of getting generic code suggestions, you get specialized guidance from virtual experts like Senior Engineers, Security Engineers, DevOps Engineers, and more.</p>
+
+                <h2 id="installation">Installation</h2>
+                
+                <h3>Method 1: Direct Download</h3>
+                <pre><code># Download the framework file
+curl -o agents.md https://raw.githubusercontent.com/IlamSingleBrainCell/ai-agent-orchestrator/main/agents.md
+
+# Place in your project root
+mv agents.md /your-project-root/</code></pre>
+
+                <h3>Method 2: Git Clone</h3>
+                <pre><code>git clone https://github.com/IlamSingleBrainCell/ai-agent-orchestrator.git
+cd ai-agent-orchestrator
+cp agents.md /your-project-root/</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>✅ That's it!</strong> No configuration needed. The framework works immediately.
+                </div>
+
+                <h2 id="usage">Basic Usage</h2>
+                
+                <p>Using the framework is incredibly simple. Just add <code>@agents</code> before your prompt:</p>
+
+                <h3>Before (Generic AI)</h3>
+                <pre><code>"Create a login system"</code></pre>
+                <p><em>Result: Basic, generic implementation</em></p>
+
+                <h3>After (Expert Persona)</h3>
+                <pre><code>"@agents Create a secure login system with OAuth2"</code></pre>
+                <p><em>Result: Production-ready implementation from Security Engineer + Backend Engineer personas</em></p>
+
+                <h2 id="personas">All Available Personas</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Persona</th>
+                            <th>Expertise</th>
+                            <th>Trigger Keywords</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>👑 Product Owner</strong></td>
+                            <td>User stories, requirements, roadmaps</td>
+                            <td>user stories, requirements, features, roadmap</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🏃 Scrum Master</strong></td>
+                            <td>Agile processes, team coordination</td>
+                            <td>scrum, agile, sprint, standup, retrospective</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🏗️ Architect</strong></td>
+                            <td>System design, technical strategy</td>
+                            <td>architecture, system design, scalability, patterns</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🔧 Tech Lead</strong></td>
+                            <td>Technical leadership, code quality</td>
+                            <td>technical leadership, code review, mentoring</td>
+                        </tr>
+                        <tr>
+                            <td><strong>💎 Senior Engineer</strong></td>
+                            <td>Complex development, optimization</td>
+                            <td>complex implementation, performance optimization</td>
+                        </tr>
+                        <tr>
+                            <td><strong>💻 Software Engineer</strong></td>
+                            <td>Feature development, debugging</td>
+                            <td>implement, develop, code, feature, bug fix</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🎨 Frontend Engineer</strong></td>
+                            <td>UI development, client-side optimization</td>
+                            <td>frontend, React, Vue, Angular, CSS, HTML</td>
+                        </tr>
+                        <tr>
+                            <td><strong>⚙️ Backend Engineer</strong></td>
+                            <td>Server-side development, APIs</td>
+                            <td>backend, API, REST, GraphQL, database</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📱 Mobile Engineer</strong></td>
+                            <td>Mobile app development</td>
+                            <td>mobile, iOS, Android, React Native, Flutter</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🔬 QA Lead</strong></td>
+                            <td>Test strategy, quality processes</td>
+                            <td>test strategy, quality assurance, QA process</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🤖 SDET</strong></td>
+                            <td>Test automation, frameworks</td>
+                            <td>test automation, automation framework, CI/CD testing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🚀 DevOps Engineer</strong></td>
+                            <td>Infrastructure, deployment, CI/CD</td>
+                            <td>deploy, infrastructure, pipeline, docker, kubernetes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🔒 Security Engineer</strong></td>
+                            <td>Security implementation, vulnerability assessment</td>
+                            <td>security, vulnerability, authentication, encryption</td>
+                        </tr>
+                        <tr>
+                            <td><strong>📊 Data Engineer</strong></td>
+                            <td>Data pipelines, analytics</td>
+                            <td>data pipeline, ETL, data warehouse, analytics</td>
+                        </tr>
+                        <tr>
+                            <td><strong>🛡️ CISA</strong></td>
+                            <td>IT audit, compliance</td>
+                            <td>audit, compliance, governance, regulatory</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2 id="advanced">Advanced Usage</h2>
+
+                <h3>Multi-Persona Tasks</h3>
+                <p>Complex tasks automatically get multiple expert personas:</p>
+                
+                <pre><code>@agents "Build complete e-commerce checkout flow"
+
+→ Automatically assigns:
+  • Product Owner (user stories)
+  • Frontend Engineer (UI implementation)  
+  • Backend Engineer (payment processing)
+  • Security Engineer (payment security)
+  • QA Lead (testing strategy)</code></pre>
+
+                <h3>Explicit Persona Selection</h3>
+                <pre><code>@agents "As Security Engineer and DevOps Engineer, review this deployment script"</code></pre>
+
+                <h2 id="customization">Customization</h2>
+
+                <p>Add your own personas by editing the <code>agents.md</code> file:</p>
+
+                <pre><code>### ML Engineer
+**Role**: Machine Learning implementation, model deployment
+**Triggers**: machine learning, ML, model, AI, tensorflow, pytorch
+**Output Style**:
+- Research-backed approaches
+- Performance metrics focus  
+- Scalable ML pipeline design
+
+**Example Responsibilities**:
+- Design and train ML models
+- Implement model deployment pipelines
+- Optimize model performance
+- Create data preprocessing workflows</code></pre>
+
+                <h2 id="ai-tools">AI Tool Integration</h2>
+
+                <h3>Cursor</h3>
+                <pre><code># In any file or chat:
+@agents "Your prompt here"</code></pre>
+
+                <h3>GitHub Copilot</h3>
+                <pre><code># In Copilot Chat:
+Using agents framework: "Your prompt"
+
+# Or in code comments:
+// @agents: Implement rate limiting for this API</code></pre>
+
+                <h3>Jules</h3>
+                <pre><code># In terminal:
+jules "@agents Deploy to production with zero downtime"</code></pre>
+
+                <h3>Claude/ChatGPT/Any AI</h3>
+                <pre><code>"Using the agents framework from my project, [your prompt]"</code></pre>
+
+                <h2 id="examples">Real-World Examples</h2>
+
+                <h3>🏗️ Architecture Design</h3>
+                <pre><code>@agents "Design microservices architecture for high-traffic e-commerce platform"
+
+→ Result from Architect + DevOps Engineer + Security Engineer:
+  ✓ Complete system architecture diagram
+  ✓ Service boundaries and communication patterns
+  ✓ Scalability and performance considerations
+  ✓ Security architecture and threat model
+  ✓ Infrastructure requirements and deployment strategy</code></pre>
+
+                <h3>🔒 Security Implementation</h3>
+                <pre><code>@agents "Implement JWT authentication with refresh tokens"
+
+→ Result from Security Engineer + Backend Engineer:
+  ✓ Secure JWT implementation with proper signing
+  ✓ Refresh token rotation strategy
+  ✓ Token storage and transmission security
+  ✓ Rate limiting and brute force protection
+  ✓ Comprehensive security testing approach</code></pre>
+
+                <h3>🚀 DevOps Automation</h3>
+                <pre><code>@agents "Create production-ready Kubernetes deployment"
+
+→ Result from DevOps Engineer + Security Engineer:
+  ✓ Complete K8s manifests with best practices
+  ✓ Health checks and resource limits
+  ✓ Security contexts and network policies
+  ✓ Monitoring and logging configuration
+  ✓ CI/CD pipeline integration</code></pre>
+
+                <h2 id="troubleshooting">Troubleshooting</h2>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ AI Tool Not Recognizing Framework?</strong>
+                    <ul>
+                        <li>Ensure <code>agents.md</code> is in your project root</li>
+                        <li>Try explicit reference: "Using the agents framework..."</li>
+                        <li>Check if your AI tool supports file context</li>
+                    </ul>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Getting Generic Responses?</strong>
+                    <ul>
+                        <li>Use <code>@agents</code> prefix consistently</li>
+                        <li>Be more specific with your prompts</li>
+                        <li>Include relevant project context</li>
+                        <li>Try explicit persona requests</li>
+                    </ul>
+                </div>
+
+                <h3>Common Issues</h3>
+
+                <h4>Issue: Wrong Persona Assigned</h4>
+                <p><strong>Solution:</strong> Use explicit persona request:</p>
+                <pre><code>@agents "As DevOps Engineer, create deployment pipeline"</code></pre>
+
+                <h4>Issue: Need Multiple Personas</h4>
+                <p><strong>Solution:</strong> Request specific combination:</p>
+                <pre><code>@agents "As Security Engineer and Backend Engineer, implement OAuth2"</code></pre>
+
+                <h4>Issue: Framework Not Loading</h4>
+                <p><strong>Solution:</strong> Include explicit context:</p>
+                <pre><code>"Reference the agents.md framework and respond as appropriate persona: [your prompt]"</code></pre>
+
+                <div class="alert alert-success">
+                    <strong>🆘 Need More Help?</strong>
+                    <ul>
+                        <li><a href="https://github.com/IlamSingleBrainCell/ai-agent-orchestrator/issues" target="_blank">Open an issue on GitHub</a></li>
+                        <li><a href="https://github.com/IlamSingleBrainCell/ai-agent-orchestrator/discussions" target="_blank">Join community discussions</a></li>
+                        <li>Check the <a href="https://github.com/IlamSingleBrainCell/ai-agent-orchestrator/blob/main/README.md" target="_blank">detailed README</a></li>
+                    </ul>
+                </div>
+
+                <p style="text-align: center; margin-top: 3rem;">
+                    <a href="index.html" class="back-to-home">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </p>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AI Agent Orchestrator Framework. MIT License.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active sidebar link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('h1[id], h2[id]');
+            const navLinks = document.querySelectorAll('.sidebar a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

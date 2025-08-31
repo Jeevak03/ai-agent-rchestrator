@@ -1,0 +1,71 @@
+# GitHub Pages Configuration
+title: "AI Agent Orchestrator Framework"
+description: "Transform any AI coding assistant into a specialized team of expert developers"
+url: "https://IlamSingleBrainCell.github.io"
+baseurl: "/ai-agent-orchestrator"
+
+# Site settings
+author:
+  name: "IlamSingleBrainCell"
+  email: "your.email@example.com"
+
+# GitHub repository
+github:
+  repository_url: "https://github.com/IlamSingleBrainCell/ai-agent-orchestrator"
+
+# Theme (optional - GitHub Pages supports these themes)
+# theme: minima
+# remote_theme: pages-themes/minimal@v0.2.0
+
+# Enable GitHub Pages
+plugins:
+  - jekyll-default-layout
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-relative-links
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:name/
+
+# Navigation
+navigation:
+  - name: "Home"
+    url: "/"
+  - name: "Documentation" 
+    url: "/docs/"
+  - name: "GitHub"
+    url: "https://github.com/yourusername/ai-agent-orchestrator"
+
+# SEO
+google_analytics: "G-XXXXXXXXXX" # Add your Google Analytics ID
+google_site_verification: "your-verification-code"
+
+# Social
+twitter:
+  username: "yourusername"
+  card: "summary_large_image"
+
+# Open Graph
+og:
+  image: "/assets/images/og-image.png"
+  type: "website"
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/
+  - README.md
+  - LICENSE
+  - .gitignore
