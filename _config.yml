@@ -1,17 +1,17 @@
 # GitHub Pages Configuration
 title: "AI Agent Orchestrator Framework"
 description: "Transform any AI coding assistant into a specialized team of expert developers"
-url: "https://IlamSingleBrainCell.github.io"
+url: "https://Jeevak03.github.io"
 baseurl: "/ai-agent-orchestrator"
 
 # Site settings
 author:
-  name: "IlamSingleBrainCell"
-  email: "your.email@example.com"
+  name: "Jeevanandham K"
+  email: "jeevanandhamk@gmail.com"
 
 # GitHub repository
 github:
-  repository_url: "https://github.com/IlamSingleBrainCell/ai-agent-orchestrator"
+  repository_url: "https://github.com/Jeevak03/ai-agent-rchestrator"
 
 # Theme (optional - GitHub Pages supports these themes)
 # theme: minima
